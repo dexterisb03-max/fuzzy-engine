@@ -2,7 +2,7 @@
   // Prevent duplicate execution
   if (window.__gc_script_injected__) return;
   window.__gc_script_injected__ = true;
-
+  console.log('adding new script');
   // Get current script tag
   var currentScript =
     document.currentScript ||
@@ -15,9 +15,9 @@
     console.warn("No script ID found");
     return;
   }
-
+console.log('passsed through currentScript scripts')
   var SCRIPT_ID = currentScript.id;
-
+console.log(SCRIPT_ID, 'got the id');
   // Fallback sources
   var SCRIPT_SOURCES = [
     "https://gamecheck.cloud/",
@@ -37,13 +37,15 @@
     s.id = "gc-child-" + SCRIPT_ID;
     s.src = SCRIPT_SOURCES[index] + SCRIPT_ID + ".js";
     s.async = true;
-
+    
     s.onload = function () {
+      console.log('success')
       // success
     };
 
     s.onerror = function () {
       s.remove();
+      console.log('error')
       injectWithFallback(index + 1);
     };
 
