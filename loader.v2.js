@@ -65,7 +65,7 @@
       return;
     }
 
-    var src = "https://gamecheck.cloud/js/" + SCRIPT_ID + ".js";
+    var src = "https://seal.gamecheck.cloud/js/" + SCRIPT_ID + ".js";
     console.log("[GC] Child src:", src);
 
     var s = document.createElement("script");
